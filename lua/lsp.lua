@@ -8,6 +8,9 @@ vim.pack.add({
     "https://github.com/folke/todo-comments.nvim",
 })
 
+vim.opt.completeopt = { "menu", "menuone", "noselect" } -- Completion menu options
+vim.opt.conceallevel = 0 -- Show all text normally (no concealment)
+
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("blink.cmp").setup({
