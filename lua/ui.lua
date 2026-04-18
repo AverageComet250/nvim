@@ -22,7 +22,8 @@ vim.opt.termguicolors = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.signcolumn = "yes"
+vim.opt.numberwidth = 4
+vim.opt.signcolumn = "yes:2"
 
 require("noice").setup({
     lsp = {
