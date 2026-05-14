@@ -25,7 +25,9 @@ require("blink.cmp").setup({
     },
 })
 
-require("todo-comments").setup()
+require("todo-comments").setup({
+    signs = false
+})
 require("nvim-autopairs").setup()
 require("nvim-ts-autotag").setup({
     opts = {
@@ -38,7 +40,7 @@ require("nvim-ts-autotag").setup({
 -- Enable LSP diagnostics (Inline error messages)
 vim.diagnostic.config({
   virtual_text = true,  -- Show inline errors
-  signs = true,         -- Show signs in the gutter
+  signs = false,         -- Show signs in the gutter
   underline = true,     -- Underline errors/warnings
   update_in_insert = false, -- Don't update diagnostics while typing
   severity_sort = true  -- Sort diagnostics by severity
