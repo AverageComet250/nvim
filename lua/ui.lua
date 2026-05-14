@@ -16,6 +16,7 @@ vim.pack.add({
 })
 
 vim.cmd.packadd("nvim.undotree")
+vim.cmd.packadd("nohlsearch")
 
 
 vim.opt.termguicolors = true
