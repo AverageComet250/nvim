@@ -38,3 +38,7 @@ vim.keymap.set("n", "<S-j>", "")
 vim.keymap.set("n", "<S-k>", "")
 -- vim.keymap.del("n", "<S-j>")
 -- vim.keymap.del("n", "<S-k>")
+
+-- convert ::: to ∴
+vim.cmd("iabbrev ::: ∴")
+vim.cmd("iabbrev :d Δ")
