@@ -22,6 +22,7 @@ require("nvim-treesitter").install {
     "html",
     "typst",
     "rust",
+    "javascript",
     -- required languages
     "lua",
     "vim",
