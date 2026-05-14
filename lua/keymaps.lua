@@ -1,4 +1,5 @@
 vim.keymap.set('n', "<Leader>e", "<cmd>Neotree toggle<cr>")
+vim.keymap.set('n', "<leader>Q", "<cmd>qall<cr>")
 vim.keymap.set('n', "<leader>u", "<cmd>Undotree<cr>")
 vim.keymap.set('n', "<leader>z", "<cmd>ZenMode<cr>")
 
