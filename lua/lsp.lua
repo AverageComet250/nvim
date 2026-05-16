@@ -3,6 +3,7 @@ vim.pack.add({
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/mason-org/mason-lspconfig.nvim",
     "https://github.com/saghen/blink.cmp",
+    "https://github.com/saghen/blink.lib",
     "https://github.com/windwp/nvim-autopairs",
     "https://github.com/windwp/nvim-ts-autotag",
     "https://github.com/folke/todo-comments.nvim",
@@ -13,16 +14,12 @@ vim.opt.conceallevel = 0 -- Show all text normally (no concealment)
 
 require("mason").setup()
 require("mason-lspconfig").setup()
-require("blink.cmp").setup({
+local cmp = require("blink.cmp")
+cmp.build():wait(60000)
+cmp.setup({
     keymap = {
         preset = "enter",
-    },
-    fuzzy = {
-        implementation = "prefer_rust",
-        prebuilt_binaries = {
-            force_version = "v*"
-        }
-    },
+    }
 })
 
 require("todo-comments").setup({
