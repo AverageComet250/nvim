@@ -3,6 +3,47 @@ vim.keymap.set('n', "<leader>Q", "<cmd>qall<cr>")
 vim.keymap.set('n', "<leader>u", "<cmd>Undotree<cr>")
 vim.keymap.set('n', "<leader>z", "<cmd>ZenMode<cr>")
 
+local function insert_lines(dir, count)
+    local row = vim.api.nvim_win_get_cursor(0)[1]
+
+    local lines = {}
+    for _ = 1, count do
+        lines[#lines + 1] = ""
+    end
+
+    if dir == "below" then
+        vim.api.nvim_put(lines, "l", true, true)
+        vim.api.nvim_win_set_cursor(0, { row + count, 0 })
+    else
+        vim.api.nvim_put(lines, "l", false, true)
+        vim.api.nvim_win_set_cursor(0, { row, 0 })
+    end
+
+    vim.cmd.startinsert()
+end
+
+-- shared operatorfunc
+local function operator_insert_lines(_)
+    local dir = vim.g._insert_dir
+    insert_lines(dir, vim.v.count1)
+end
+
+_G.operator_insert_lines = operator_insert_lines
+
+local function trigger_insert(dir)
+    vim.g._insert_dir = dir
+    vim.o.operatorfunc = "v:lua.operator_insert_lines"
+    return "g@l"
+end
+
+vim.keymap.set("n", "o", function()
+    return trigger_insert("below")
+end, { expr = true, noremap = true, silent = true })
+
+vim.keymap.set("n", "O", function()
+    return trigger_insert("above")
+end, { expr = true, noremap = true, silent = true })
+
 -- some random lazyvim up/down magic
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
