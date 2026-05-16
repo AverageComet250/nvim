@@ -42,8 +42,14 @@ require("noice").setup({
     }
 })
 
-require("lualine").setup() -- NOTE: customise this
+require("lualine").setup({
+    extensions = {
+        'neo-tree'
+    }
+}) -- NOTE: customise this
+
 require("bufferline").setup() -- NOTE: customise this
+
 -- require("statuscol").setup()
 
 -- AI Slop count function
