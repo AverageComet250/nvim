@@ -89,7 +89,7 @@ require('incline').setup {
       	    ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
             ' ',
       	    -- { filename, gui = modified and 'bold,italic' or 'bold' },
-      	    { "(" .. count_text_windows() .. ") " .. filename, gui = modified and 'bold,italic' or 'bold' },
+      	    { filename, gui = modified and 'bold,italic' or 'bold' },
             ' ',
       	    guibg = '#44406e',
     	}

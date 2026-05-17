@@ -10,8 +10,6 @@ require("ui")
 -- TODO: nvim-navic style lualine
 -- TODO: make bufferline tabs hover
 
--- TODO: function for window parsing to only count file windows
-
 -- TODO: redo dashboard
 -- TODO: add actual dashboard lines
 
