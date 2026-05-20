@@ -84,3 +84,9 @@ vim.keymap.set("n", "<S-k>", "")
 -- convert ::: to ∴
 vim.cmd("iabbrev ::: ∴")
 vim.cmd("iabbrev :d Δ")
+
+-- disable arrow keys
+vim.keymap.set({ "n", "v", "i" }, "<Up>", "<Nop>")
+vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
+vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
+vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
