@@ -77,6 +77,10 @@
       "rev": "c46172d0911aa5d49ba5f39f4351d1bb7aa289cc",
       "src": "https://github.com/luukvbaal/statuscol.nvim"
     },
+    "themeInitNvim": {
+      "rev": "87e9230e22f88f4242e7122f09333860c1a969c5",
+      "src": "https://github.com/initsyscall/themeInitNvim"
+    },
     "todo-comments.nvim": {
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"

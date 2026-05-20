@@ -1,4 +1,5 @@
 vim.pack.add({
+    "https://github.com/initsyscall/themeInitNvim",
     "https://github.com/lewis6991/gitsigns.nvim",
     "https://github.com/folke/noice.nvim",
     "https://github.com/nvim-lualine/lualine.nvim",
@@ -20,6 +21,7 @@ vim.cmd.packadd("nohlsearch")
 
 
 vim.opt.termguicolors = true
+vim.cmd('colorscheme nightSyscall')
 
 vim.opt.number = true
 vim.opt.relativenumber = true
