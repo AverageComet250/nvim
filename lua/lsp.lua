@@ -7,6 +7,7 @@ vim.pack.add({
     "https://github.com/windwp/nvim-autopairs",
     "https://github.com/windwp/nvim-ts-autotag",
     "https://github.com/folke/todo-comments.nvim",
+    "https://github.com/kuri-sun/todoage.nvim"
 })
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" } -- Completion menu options

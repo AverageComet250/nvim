@@ -85,6 +85,10 @@
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
     },
+    "todoage.nvim": {
+      "rev": "255156de0372d47132f7c76714afd3199bd79f2d",
+      "src": "https://github.com/kuri-sun/todoage.nvim"
+    },
     "twilight.nvim": {
       "rev": "664e752f4a219801265cc3fc18782b457b58c1e1",
       "src": "https://github.com/folke/twilight.nvim"
