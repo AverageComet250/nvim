@@ -19,6 +19,8 @@ vim.pack.add({
 vim.cmd.packadd("nvim.undotree")
 vim.cmd.packadd("nohlsearch")
 
+vim.opt.title = true
+vim.o.titlestring = (vim.env.SSH_TTY and "SSH " or "") .. "%t%( %M%)%( (%{expand('%:p:~:h')})%)%( %a%)"
 
 vim.opt.termguicolors = true
 vim.cmd('colorscheme nightSyscall')
