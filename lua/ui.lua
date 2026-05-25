@@ -46,10 +46,46 @@ require("noice").setup({
     }
 })
 
+local get_active_lsps = function()
+  local buf_ft = vim.api.nvim_get_option_value("filetype", {})
+  local clients = vim.lsp.get_clients { bufnr = 0 }
+
+  if not clients or vim.tbl_isempty(clients) then
+    return "[No Active Lsp]"
+  end
+
+  local active = {}
+
+  for _, client in ipairs(clients) do
+    local filetypes = client.config.filetypes
+
+    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+      table.insert(active, client.name)
+    end
+  end
+
+  if #active == 0 then
+    return "[No Active Lsp]"
+  end
+
+  return "[" .. table.concat(active, ", ") .. "]"
+end
+
 require("lualine").setup({
     extensions = {
         'neo-tree'
-    }
+    },
+    sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_c = {
+            { "filename", separator = "" },
+            { get_active_lsps, separator = "" }
+        },
+        lualine_x = { "filetype" },
+        lualine_y = { "progress" },
+        lualine_z = { "location" }
+    },
 }) -- NOTE: customise this
 
 require("bufferline").setup() -- NOTE: customise this
