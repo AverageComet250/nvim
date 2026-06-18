@@ -1,9 +1,8 @@
 require("options")
-require("keymaps")
 require("lsp")
 require("treesitter")
 require("ui")
--- require("zen")
+require("keymaps")
 require("moxide")
 -- require("cord")
 
