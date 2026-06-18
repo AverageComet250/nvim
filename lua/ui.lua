@@ -1,5 +1,6 @@
 vim.pack.add({
     "https://github.com/initsyscall/themeInitNvim",
+    "https://github.com/jackplus-xyz/binary.nvim",
     "https://github.com/lewis6991/gitsigns.nvim",
     "https://github.com/folke/noice.nvim",
     "https://github.com/nvim-lualine/lualine.nvim",
@@ -29,8 +30,15 @@ end
 vim.opt.title = true
 vim.o.titlestring = (vim.env.SSH_TTY and "SSH " or "") .. "%t%( %M%)%( (%{expand('%:p:~:h')})%)%( %a%)"
 
+require("binary").setup({
+    style = "dark",
+    colors = {
+        bg = "#00CA9E",
+    },
+})
+
 vim.opt.termguicolors = true
-vim.cmd('colorscheme nightSyscall')
+vim.cmd('colorscheme binary')
 
 vim.opt.number = true
 vim.opt.relativenumber = true
