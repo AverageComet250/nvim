@@ -148,7 +148,7 @@ require("which-key").setup({
             "<leader>b",
             group = "buffer",
             expand = function()
-              return require("which-key.extras").expand.buf()
+                return require("which-key.extras").expand.buf()
             end,
         },
         {
@@ -156,11 +156,13 @@ require("which-key").setup({
             group = "windows",
             proxy = "<c-w>",
             expand = function()
-              return require("which-key.extras").expand.win()
+                return require("which-key.extras").expand.win()
             end,
         },
-    }
+    },
 })
+
+vim.keymap.set({'n', 'v'}, 'gq', vim.lsp.buf.format, { desc = "format document [LSP]" }) -- make sure it shows up
 
 
 require("neo-tree").setup({ -- NOTE: rewrite with own config
