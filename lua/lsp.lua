@@ -43,3 +43,11 @@ vim.diagnostic.config({
   update_in_insert = false, -- Don't update diagnostics while typing
   severity_sort = true  -- Sort diagnostics by severity
 })
+
+vim.lsp.config('harper_ls', {
+  settings = {
+    ["harper-ls"] = {
+      dialect = "British",
+    },
+  },
+})
