@@ -4,6 +4,7 @@ require("treesitter")
 require("ui")
 require("keymaps")
 require("moxide")
+require("kitty")
 -- require("cord")
 
 -- TODO: fix sidebar changing width
