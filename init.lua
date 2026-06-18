@@ -4,6 +4,7 @@ require("lsp")
 require("treesitter")
 require("ui")
 -- require("zen")
+require("moxide")
 -- require("cord")
 
 -- TODO: fix sidebar changing width
