@@ -7,6 +7,8 @@ vim.pack.add({
     "https://github.com/luukvbaal/statuscol.nvim",
     "https://github.com/b0o/incline.nvim",
     "https://github.com/folke/which-key.nvim",
+    "https://github.com/tris203/precognition.nvim",
+    "https://github.com/m4xshen/hardtime.nvim",
     {
         src = "https://github.com/nvim-neo-tree/neo-tree.nvim",
         version = vim.version.range('3')
@@ -29,6 +31,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 4
 vim.opt.signcolumn = "yes:1"
+
+require("hardtime").setup()
 
 require("noice").setup({
     lsp = {

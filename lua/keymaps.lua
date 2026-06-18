@@ -2,6 +2,8 @@ vim.keymap.set('n', "<Leader>e", "<cmd>Neotree toggle<cr>")
 vim.keymap.set('n', "<leader>Q", "<cmd>qall<cr>")
 vim.keymap.set('n', "<leader>u", "<cmd>Undotree<cr>")
 vim.keymap.set('n', "<leader>z", "<cmd>ZenMode<cr>")
+vim.keymap.set('n', "<leader>p", require("precognition").peek)
+vim.keymap.set('n', "<leader>h", "<cmd>Hardtime toggle<cr>")
 
 local function insert_lines(dir, count)
     local row = vim.api.nvim_win_get_cursor(0)[1]
@@ -84,9 +86,3 @@ vim.keymap.set("n", "<S-k>", "")
 -- convert ::: to ∴
 vim.cmd("iabbrev ::: ∴")
 vim.cmd("iabbrev :d Δ")
-
--- disable arrow keys
-vim.keymap.set({ "n", "v", "i" }, "<Up>", "<Nop>")
-vim.keymap.set({ "n", "v", "i" }, "<Down>", "<Nop>")
-vim.keymap.set({ "n", "v", "i" }, "<Left>", "<Nop>")
-vim.keymap.set({ "n", "v", "i" }, "<Right>", "<Nop>")
