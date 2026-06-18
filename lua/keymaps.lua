@@ -4,6 +4,7 @@ vim.keymap.set('n', "<leader>u", "<cmd>Undotree<cr>")
 vim.keymap.set('n', "<leader>z", "<cmd>ZenMode<cr>")
 vim.keymap.set('n', "<leader>p", require("precognition").peek)
 vim.keymap.set('n', "<leader>h", "<cmd>Hardtime toggle<cr>")
+vim.keymap.set('n', "<leader>g", require('neogit').open, { desc = "Open Neogit UI" })
 
 local function insert_lines(dir, count)
     local row = vim.api.nvim_win_get_cursor(0)[1]

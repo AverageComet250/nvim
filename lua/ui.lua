@@ -9,6 +9,7 @@ vim.pack.add({
     "https://github.com/folke/which-key.nvim",
     "https://github.com/tris203/precognition.nvim",
     "https://github.com/m4xshen/hardtime.nvim",
+    "https://github.com/neogitorg/neogit",
     {
         src = "https://github.com/nvim-neo-tree/neo-tree.nvim",
         version = vim.version.range('3')
