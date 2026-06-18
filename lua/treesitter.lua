@@ -10,7 +10,7 @@ vim.pack.add({
     "https://github.com/nvim-treesitter/nvim-treesitter"
 })
 
-require("nvim-treesitter").install {
+local languages = {
     "python",
     "rust",
     "zsh",
@@ -30,3 +30,18 @@ require("nvim-treesitter").install {
     "c",
     "query"
 }
+
+require("nvim-treesitter").install(languages)
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = languages,
+    callback = function()
+        print("treesitter setup")
+        vim.treesitter.start()
+
+        vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.wo[0][0].foldmethod = 'expr'
+
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+})
