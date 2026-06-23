@@ -24,7 +24,10 @@ cmp.setup({
 })
 
 require("todo-comments").setup({
-    signs = false
+    signs = false,
+    highlight = {
+        comments_only = false
+    }
 })
 require("nvim-autopairs").setup()
 require("nvim-ts-autotag").setup({
