@@ -36,7 +36,6 @@ require("nvim-treesitter").install(languages)
 vim.api.nvim_create_autocmd('FileType', {
     pattern = languages,
     callback = function()
-        print("treesitter setup")
         vim.treesitter.start()
 
         vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
