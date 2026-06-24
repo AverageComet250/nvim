@@ -80,9 +80,7 @@ vim.keymap.set("n", "<leader>bd", "<cmd>bd<cr>", { desc = "Delete Buffer" })
 
 -- disable <shift> jk
 vim.keymap.set("n", "<S-j>", "")
-vim.keymap.set("n", "<S-k>", "")
 -- vim.keymap.del("n", "<S-j>")
--- vim.keymap.del("n", "<S-k>")
 
 -- convert ::: to ∴
 vim.cmd("iabbrev ::: ∴")
