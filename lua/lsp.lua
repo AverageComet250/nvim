@@ -45,6 +45,9 @@ require("nvim-ts-autotag").setup({
         enable_close_on_slash = true
     }
 })
+
+vim.lsp.codelens.enable()
+
 -- The following was made by chat lmao
 -- Enable LSP diagnostics (Inline error messages)
 vim.diagnostic.config({
