@@ -85,3 +85,23 @@ vim.keymap.set("n", "<S-j>", "")
 -- convert ::: to ∴
 vim.cmd("iabbrev ::: ∴")
 vim.cmd("iabbrev :d Δ")
+
+local fzf = require("fzf-lua")
+vim.keymap.set("n", "gd", fzf.lsp_definitions, { desc = "LSP: Go to definition" })
+vim.keymap.set("n", "grr", fzf.lsp_references, { desc = "LSP: Find references" })
+vim.keymap.set("n", "gri", fzf.lsp_implementations, { desc = "LSP: Find implementations" })
+vim.keymap.set("n", "<leader>sd", fzf.lsp_document_symbols, { desc = "LSP: Document symbols" })
+vim.keymap.set("n", "<leader>sw", fzf.lsp_workspace_symbols, { desc = "LSP: Workspace symbols" })
+
+vim.api.nvim_create_user_command("Ripgrep", function(opts)
+  fzf.live_grep({
+    search = opts.args ~= "" and opts.args or nil,
+  })
+end, {
+  nargs = "*",
+  desc = "FZF live grep",
+})
+
+vim.cmd("cnoreabbrev rg Ripgrep")
+vim.cmd("cnoreabbrev todo TodoFzfLua")
+vim.cmd("cnoreabbrev msg Noice Pick")
