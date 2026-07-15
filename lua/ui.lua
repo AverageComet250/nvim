@@ -10,7 +10,6 @@ vim.pack.add({
     "https://github.com/ibhagwan/fzf-lua",
     "https://github.com/nvim-lualine/lualine.nvim",
     "https://github.com/akinsho/bufferline.nvim",
-    "https://github.com/luukvbaal/statuscol.nvim",
     "https://github.com/b0o/incline.nvim",
     "https://github.com/folke/which-key.nvim",
     "https://github.com/tris203/precognition.nvim",
@@ -45,11 +44,6 @@ require('silentium').setup({ accent = require('silentium').accents.violet })
 
 vim.opt.termguicolors = true
 vim.cmd('colorscheme silentium')
-
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.numberwidth = 4
-vim.opt.signcolumn = "yes:1"
 
 require("noice").setup({
     lsp = {
