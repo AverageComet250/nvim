@@ -7,7 +7,6 @@ vim.pack.add({
     "https://github.com/jackplus-xyz/binary.nvim",
     "https://github.com/lewis6991/gitsigns.nvim",
     "https://github.com/folke/noice.nvim",
-    "https://github.com/ibhagwan/fzf-lua",
     "https://github.com/nvim-lualine/lualine.nvim",
     "https://github.com/akinsho/bufferline.nvim",
     "https://github.com/b0o/incline.nvim",
@@ -60,9 +59,6 @@ require("noice").setup({
         lsp_doc_border = true
     }
 })
-
-require('fzf-lua').setup({'fzf-native'})
-require("fzf-lua").register_ui_select()
 
 local get_active_lsps = function()
   local buf_ft = vim.api.nvim_get_option_value("filetype", {})
