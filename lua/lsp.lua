@@ -23,12 +23,6 @@ cmp.setup({
         ["<Tab>"] = { 'select_next', 'snippet_forward', 'fallback'},
         ["<S-Tab>"] = { 'select_prev', 'snippet_backward', 'fallback'},
     },
-    cmdline = {
-        keymap = {
-            -- ['<Tab>'] = { 'accept' },
-            ['<CR>'] = { 'accept_and_enter', 'fallback' },
-        },
-    },
 })
 
 require("todo-comments").setup({
