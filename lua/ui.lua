@@ -10,7 +10,7 @@ vim.pack.add({
     "https://github.com/ibhagwan/fzf-lua",
     "https://github.com/nvim-lualine/lualine.nvim",
     "https://github.com/akinsho/bufferline.nvim",
-    "https://github.com/luukvbaal/statuscol.nvim",
+    -- "https://github.com/luukvbaal/statuscol.nvim",
     "https://github.com/b0o/incline.nvim",
     "https://github.com/folke/which-key.nvim",
     "https://github.com/tris203/precognition.nvim",
@@ -57,6 +57,9 @@ require("noice").setup({
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true
         }
+    },
+    popupmenu = {
+        enabled = false
     },
     presets = {
         bottom_search = true,
@@ -114,7 +117,111 @@ require("lualine").setup({
 
 require("bufferline").setup() -- NOTE: customise this
 
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+_G.MyStatuscolumn = function ()
+  -- It should return a string. Else you may get the default statuscolumn or v:null
+
+    local folds = function ()
+      if not vim.wo.foldenable then
+            return ""
+      end
+
+      if vim.v.virtnum ~= 0 then
+        return " "
+      end
+
+      local foldlevel = vim.fn.foldlevel(vim.v.lnum);
+      local foldlevel_before = vim.fn.foldlevel((vim.v.lnum - 1) >= 1 and vim.v.lnum - 1 or 1);
+      local foldlevel_after = vim.fn.foldlevel((vim.v.lnum + 1) <= vim.fn.line("$") and (vim.v.lnum + 1) or vim.fn.line("$"));
+
+      local foldclosed = vim.fn.foldclosed(vim.v.lnum);
+
+      -- Line has nothing to do with folds so we will skip it
+      if foldlevel == 0 then
+        return "  ";
+      end
+
+      -- Line is a closed fold(I know second condition feels unnecessary but I will still add it)
+      if foldclosed ~= -1 and foldclosed == vim.v.lnum then
+        return "▶";
+      end
+
+      -- I didn't use ~= because it couldn't make a nested fold have a lower level than it's parent fold and it's not something I would use
+      if foldlevel > foldlevel_before then
+        -- return "▽"
+        return "▼"
+      end
+
+      -- The line is the last line in the fold
+      if foldlevel > foldlevel_after then
+        return "╰";
+      end
+
+      -- Line is in the middle of an open fold
+      return "│";
+    end
+
+    local lineno = function()
+        if vim.v.virtnum ~= 0 then
+            return "   " -- same width as your %-3d/%3d
+        end
+
+        if vim.v.relnum == 0 then
+            -- Current line: left aligned
+            return string.format("%-3d", vim.v.lnum)
+        else
+            -- Other lines: right aligned
+            return string.format("%3d", vim.v.relnum)
+        end
+    end
+
+    statcol = table.concat({
+        folds(),
+        " ",
+        lineno(),
+        -- "│"
+        -- " "
+    })
+
+    return statcol
+  -- return "Hi";
+end
+
+-- vim.opt.statuscolumn = "%C%s%=%{v:relnum ? v:relnum : v:lnum} "
+-- vim.opt.statuscolumn = "%!v:lua.MyStatuscolumn()";
+vim.opt.signcolumn = "yes:1"
+vim.opt.statuscolumn = "%{v:lua.MyStatuscolumn()}%s"
 -- require("statuscol").setup()
+-- local builtin = require("statuscol.builtin")
+-- local ffi = require("statuscol.ffidef")
+-- local C = ffi.C
+--
+-- -- only show fold level up to this level
+-- local fold_level_limit = 3
+-- local function foldfunc(args)
+--   local foldinfo = C.fold_info(args.wp, args.lnum)
+--   if foldinfo.level > fold_level_limit then
+--     return " "
+--   end
+--
+--   return builtin.foldfunc(args)
+-- end
+--
+-- require("statuscol").setup {
+--   relculright = false,
+--   segments = {
+--     { text = { "%s" }, click = "v:lua.ScSa" },
+--     { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+--     { text = { foldfunc, " " }, condition = { true, builtin.not_empty }, click = "v:lua.ScFa" },
+--   },
+-- }
+
+vim.opt.number = false
+vim.opt.relativenumber = false
+vim.opt.statuscolumn = ""
+vim.opt.signcolumn = "no"
 
 -- AI Slop count function
 local function count_text_windows()
