@@ -2,7 +2,7 @@ vim.keymap.set('n', "<Leader>e", "<cmd>Neotree toggle<cr>")
 vim.keymap.set('n', "<leader>Q", "<cmd>qall<cr>")
 vim.keymap.set('n', "<leader>u", "<cmd>Undotree<cr>")
 vim.keymap.set('n', "<leader>z", "<cmd>ZenMode<cr>")
-vim.keymap.set('n', "<leader>p", require("precognition").peek)
+vim.keymap.set('n', "<leader>p", require("precognition").peek, { desc = "Show line jumps" })
 vim.keymap.set('n', "<leader>h", "<cmd>Hardtime toggle<cr>")
 vim.keymap.set('n', "<leader>g", require('neogit').open, { desc = "Open Neogit UI" })
 
