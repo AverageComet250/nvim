@@ -1,4 +1,4 @@
-local font_inc = 1
+local font_inc = 4
 
 -- TODO: use vim.g.terminal_color_* where possible, as well as other global vars
 
