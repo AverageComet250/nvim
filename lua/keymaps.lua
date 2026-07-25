@@ -6,6 +6,14 @@ vim.keymap.set('n', "<leader>p", require("precognition").peek, { desc = "Show li
 vim.keymap.set('n', "<leader>h", "<cmd>Hardtime toggle<cr>")
 vim.keymap.set('n', "<leader>g", require('neogit').open, { desc = "Open Neogit UI" })
 
+vim.keymap.set('n', "<leader>s", function()
+    if vim.o.signcolumn == "no" then
+        vim.o.signcolumn = "yes:1"
+    else
+        vim.o.signcolumn = "no"
+    end
+end, { desc = "Show signcolumn" })
+
 local function insert_lines(dir, count)
     local row = vim.api.nvim_win_get_cursor(0)[1]
 
