@@ -1,7 +1,7 @@
 vim.pack.add({
     "https://github.com/initsyscall/themeInitNvim",
     "https://github.com/nyoom-engineering/oxocarbon.nvim",
-    "https://github.com/miikanissi/modus-themes.nvim",
+    "https://github.com/AverageComet250/modus-themes.nvim",
     "https://github.com/catppuccin/nvim",
     "https://github.com/silentium-theme/silentium.nvim",
     "https://github.com/jackplus-xyz/binary.nvim",
@@ -42,7 +42,7 @@ require("binary").setup({
 require('silentium').setup({ accent = require('silentium').accents.violet })
 
 vim.opt.termguicolors = true
-vim.cmd('colorscheme silentium')
+vim.cmd('colorscheme modus_vivendi')
 
 require("noice").setup({
     lsp = {
