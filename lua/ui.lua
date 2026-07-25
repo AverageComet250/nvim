@@ -12,6 +12,7 @@ vim.pack.add({
     "https://github.com/b0o/incline.nvim",
     "https://github.com/folke/which-key.nvim",
     "https://github.com/tris203/precognition.nvim",
+    "https://github.com/0xAdk/full_visual_line.nvim",
     "https://github.com/neogitorg/neogit",
     {
         src = "https://github.com/nvim-neo-tree/neo-tree.nvim",
@@ -150,6 +151,8 @@ require('incline').setup {
     end
   end
 }
+
+require('full_visual_line').setup()
 
 require("which-key").setup({
     preset = "helix",
