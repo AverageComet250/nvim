@@ -54,6 +54,26 @@ require("nvim-ts-autotag").setup({
     }
 })
 
+-- Enable LSP Folds if available
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+    -- Check if the server supports folding ranges
+    if client and client:supports_method("textDocument/foldingRange") then
+      local win = vim.api.nvim_get_current_win()
+
+      -- Enable LSP-managed folding
+      vim.wo[win].foldmethod = "expr"
+      vim.wo[win].foldexpr = "v:lua.vim.lsp.foldexpr()"
+
+      -- Keep folds open by default when entering a file
+      -- vim.wo[win].foldlevel = 99
+    end
+  end,
+})
+
 vim.lsp.codelens.enable()
 
 -- The following was made by chat lmao
