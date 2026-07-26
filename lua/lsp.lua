@@ -8,6 +8,7 @@ vim.pack.add({
     "https://github.com/saghen/blink.compat",
     "https://github.com/windwp/nvim-autopairs",
     "https://github.com/windwp/nvim-ts-autotag",
+    "https://github.com/noisesfromspace/touchup.nvim",
     "https://github.com/folke/todo-comments.nvim",
     "https://github.com/kuri-sun/todoage.nvim"
 })
@@ -53,6 +54,8 @@ require("nvim-ts-autotag").setup({
         enable_close_on_slash = true
     }
 })
+
+require("touchup").setup()
 
 -- Enable LSP Folds if available
 vim.api.nvim_create_autocmd("LspAttach", {
