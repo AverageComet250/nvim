@@ -4,6 +4,7 @@ vim.pack.add({
     "https://github.com/mason-org/mason-lspconfig.nvim",
     "https://github.com/saghen/blink.cmp",
     "https://github.com/saghen/blink.lib",
+    "https://github.com/saghen/blink.compat",
     "https://github.com/windwp/nvim-autopairs",
     "https://github.com/windwp/nvim-ts-autotag",
     "https://github.com/folke/todo-comments.nvim",
@@ -20,9 +21,21 @@ cmp.build():wait(60000)
 cmp.setup({
     keymap = {
         preset = "enter",
-        ["<Tab>"] = { 'select_next', 'snippet_forward', 'fallback'},
-        ["<S-Tab>"] = { 'select_prev', 'snippet_backward', 'fallback'},
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
     },
+    cmdline = {
+        completion = {
+            list = { selection = { preselect = false } },
+            menu = { auto_show = true },
+        },
+    },
+    snippets = {
+        preset = "default",
+    },
+    sources = {
+        default = { "lsp", "path", "snippets", "buffer", "omni" },
+    }
 })
 
 require("todo-comments").setup({
