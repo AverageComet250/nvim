@@ -2,6 +2,7 @@ vim.pack.add({
     "https://github.com/mason-org/mason.nvim",
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/mason-org/mason-lspconfig.nvim",
+    "https://github.com/rafamadriz/friendly-snippets",
     "https://github.com/saghen/blink.cmp",
     "https://github.com/saghen/blink.lib",
     "https://github.com/saghen/blink.compat",
