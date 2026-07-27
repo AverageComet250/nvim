@@ -7,7 +7,7 @@ require("debugging")
 require("picker")
 require("moxide")
 require("kitty")
--- require("cord")
+require("cord")
 
 -- TODO: fix sidebar changing width
 -- TODO: nvim-navic style lualine

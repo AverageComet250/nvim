@@ -1,9 +1,5 @@
 vim.pack.add({
-    "https://github.com/vyfor/cord.nvim"
+    "https://github.com/andweeb/presence.nvim"
 })
 
-require("cord").setup {
-    display = {
-        theme = "void"
-    }
-}
+require("presence").setup()
