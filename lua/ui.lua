@@ -13,6 +13,7 @@ vim.pack.add({
     "https://github.com/folke/which-key.nvim",
     "https://github.com/tris203/precognition.nvim",
     "https://github.com/0xAdk/full_visual_line.nvim",
+    "https://github.com/uga-rosa/ccc.nvim",
     "https://github.com/neogitorg/neogit",
     {
         src = "https://github.com/nvim-neo-tree/neo-tree.nvim",
@@ -44,6 +45,8 @@ require('silentium').setup({ accent = require('silentium').accents.violet })
 
 vim.opt.termguicolors = true
 vim.cmd('colorscheme modus_vivendi')
+
+require("ccc").setup()
 
 require("noice").setup({
     lsp = {
