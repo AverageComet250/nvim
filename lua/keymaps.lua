@@ -6,6 +6,9 @@ vim.keymap.set('n', "<leader>p", require("precognition").peek, { desc = "Show li
 vim.keymap.set('n', "<leader>h", "<cmd>Hardtime toggle<cr>")
 vim.keymap.set('n', "<leader>g", require('neogit').open, { desc = "Open Neogit UI" })
 
+vim.keymap.set('n', "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostics" })
+vim.keymap.set('n', "<C-w>d", '', { desc = "which_key_ignore" })
+
 vim.keymap.set('n', "<leader>s", function()
     if vim.o.signcolumn == "no" then
         vim.o.signcolumn = "yes:1"
