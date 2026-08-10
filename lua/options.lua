@@ -9,10 +9,13 @@ vim.opt.smarttab = true
 vim.opt.wrap = false
 vim.opt.textwidth = 80
 vim.opt.signcolumn = "no"
+vim.opt.foldlevel = 99
+
+vim.opt.mousescroll = { "ver:3", "hor:0" }
 
 vim.opt.clipboard = vim.env.SSH_CONNECTION and "" or "unnamedplus"
 
 vim.opt.spelllang = 'en_gb'
-vim.opt.spell = true
+vim.opt.spell = false
 
 vim.opt.winborder = "rounded"
