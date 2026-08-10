@@ -21,6 +21,22 @@ require("mason-lspconfig").setup()
 local cmp = require("blink.cmp")
 cmp.build():wait(60000)
 cmp.setup({
+    completion = {
+        menu = {
+            border = "single",
+            draw = {
+                -- columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'kind' } },
+                columns = { { "label", "label_description", gap = 1 }, { "kind", "kind_icon" } },
+                components = {
+                    label = {
+                        width = {
+                            max = 40
+                        },
+                    },
+                },
+            },
+        },
+    },
     keymap = {
         preset = "enter",
         ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
@@ -29,15 +45,15 @@ cmp.setup({
     cmdline = {
         completion = {
             list = { selection = { preselect = false } },
-            menu = { auto_show = true },
+            menu = { auto_show = true, border = "rounded" },
         },
     },
     snippets = {
         preset = "default",
     },
-    sources = {
-        default = { "lsp", "path", "snippets", "buffer", "omni" },
-    }
+    -- sources = {
+    --     default = { "lsp", "path", "snippets", "buffer", "omni" },
+    -- }
 })
 
 require("todo-comments").setup({
@@ -57,7 +73,7 @@ require("nvim-ts-autotag").setup({
 
 require("touchup").setup()
 
--- Enable LSP Folds if available
+-- Enable LSP Features if available
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local bufnr = args.buf
@@ -73,6 +89,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
       -- Keep folds open by default when entering a file
       -- vim.wo[win].foldlevel = 99
+    end
+
+    -- Enable Inlay Hints if Supported by Server
+    if client and client:supports_method("textDocument/inlayHint") then
+      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
     end
   end,
 })
@@ -90,9 +111,36 @@ vim.diagnostic.config({
 })
 
 vim.lsp.config('harper_ls', {
-  settings = {
-    ["harper-ls"] = {
-      dialect = "British",
+    settings = {
+        ["harper-ls"] = {
+            dialect = "British",
+        },
     },
-  },
+})
+
+
+vim.lsp.config('ruff', {
+  init_options = {
+    settings = {
+        fixAll = true
+    }
+  }
+})
+
+vim.lsp.config("lua_ls", {
+    capabilities = require("blink.cmp").get_lsp_capabilities(),
+    settings = {
+        Lua = {
+            runtime = {
+                version = "LuaJIT",
+            },
+            diagnostics = {
+                globals = { "vim" },
+            },
+            workspace = {
+                checkThirdParty = false,
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+        },
+    },
 })
