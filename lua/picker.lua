@@ -8,11 +8,21 @@ end })
 vim.pack.add({
     'https://github.com/nvim-telescope/telescope.nvim',
     'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
+    'https://github.com/nvim-telescope/telescope-ui-select.nvim',
     'https://github.com/gbrlsnchs/telescope-lsp-handlers.nvim'
 })
 
 local telescope = require("telescope")
 
-telescope.setup()
+telescope.setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<esc>"] = require("telescope.actions").close
+            },
+        },
+    }
+})
 telescope.load_extension('fzf')
+telescope.load_extension("ui-select")
 telescope.load_extension('lsp_handlers')
