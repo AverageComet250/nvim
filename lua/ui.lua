@@ -28,7 +28,7 @@ vim.cmd.packadd("nvim.undotree")
 vim.cmd.packadd("nohlsearch")
 
 if vim.g.neovide then
-    vim.o.guifont = "Iosevka Slab:h12:b"
+    vim.o.guifont = "Berkeley Mono Condensed:h14"
 end
 
 vim.opt.title = true
