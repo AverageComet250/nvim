@@ -100,10 +100,7 @@ require("lualine").setup({
     sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = {
-            { "filename", separator = "" },
-            { get_active_lsps, separator = "" }
-        },
+        lualine_c = { get_active_lsps },
         lualine_x = { "filetype" },
         lualine_y = { "progress" },
         lualine_z = { "location" }
