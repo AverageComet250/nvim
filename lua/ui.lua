@@ -73,7 +73,7 @@ local get_active_lsps = function()
   local clients = vim.lsp.get_clients { bufnr = 0 }
 
   if not clients or vim.tbl_isempty(clients) then
-    return "[No Active Lsp]"
+    return ""
   end
 
   local active = {}
@@ -87,7 +87,7 @@ local get_active_lsps = function()
   end
 
   if #active == 0 then
-    return "[No Active Lsp]"
+    return ""
   end
 
   return "[" .. table.concat(active, ", ") .. "]"
