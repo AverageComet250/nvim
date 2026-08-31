@@ -29,6 +29,10 @@ vim.cmd.packadd("nohlsearch")
 
 if vim.g.neovide then
     vim.o.guifont = "Berkeley Mono Condensed:h14"
+
+    vim.keymap.set("n", "<leader>t", function()
+        vim.fn.jobstart({ "kitty", "--directory", vim.fn.getcwd() }, { detach = false })
+    end, { desc = "Open Kitty in CWD" })
 end
 
 vim.opt.title = true
