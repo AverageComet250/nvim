@@ -93,6 +93,9 @@ local get_active_lsps = function()
   return "[" .. table.concat(active, ", ") .. "]"
 end
 
+vim.opt.showcmd = true
+vim.opt.showcmdloc = "statusline"
+
 require("lualine").setup({
     extensions = {
         'neo-tree'
@@ -101,7 +104,7 @@ require("lualine").setup({
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = { get_active_lsps },
-        lualine_x = { "filetype" },
+        lualine_x = { { "%S", separator = "  " }, "filetype" },
         lualine_y = { "progress" },
         lualine_z = { "location" }
     },
