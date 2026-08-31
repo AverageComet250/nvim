@@ -186,7 +186,7 @@ vim.keymap.set({'n', 'v'}, 'gq', vim.lsp.buf.format, { desc = "format document [
 
 
 require("neo-tree").setup({ -- NOTE: rewrite with own config
-  close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+  close_if_last_window = false,
   -- popup_border_style = "NC", -- or "" to use 'winborder' on Neovim v0.11+
   popup_border_style = "", -- or "" to use 'winborder' on Neovim v0.11+
   clipboard = {
