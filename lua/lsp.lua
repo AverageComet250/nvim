@@ -118,6 +118,9 @@ vim.lsp.config('harper_ls', {
     settings = {
         ["harper-ls"] = {
             dialect = "British",
+            linters = {
+                ToDoHyphen = false
+            }
         },
     },
 })
