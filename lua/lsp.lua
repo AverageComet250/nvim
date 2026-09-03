@@ -71,7 +71,11 @@ require("nvim-ts-autotag").setup({
     }
 })
 
-require("touchup").setup()
+require("touchup").setup({
+    bullets = {
+        enabled = false
+    }
+})
 
 -- Enable LSP Features if available
 vim.api.nvim_create_autocmd("LspAttach", {
