@@ -24,13 +24,18 @@ local function insert_lines(dir, count)
     local row = vim.api.nvim_win_get_cursor(0)[1]
 
     local lines = {}
-    for _ = 1, count do
+    for _ = 1, count - 1 do
         lines[#lines + 1] = ""
     end
 
     if dir == "below" then
         vim.api.nvim_put(lines, "l", true, true)
-        vim.api.nvim_win_set_cursor(0, { row + count, 0 })
+        vim.api.nvim_win_set_cursor(0, { row + count - 1, 0 })
+        vim.api.nvim_feedkeys(
+            vim.api.nvim_replace_termcodes("<CR>", true, false, true),
+            "t",
+            false
+        )
     else
         vim.api.nvim_put(lines, "l", false, true)
         vim.api.nvim_win_set_cursor(0, { row, 0 })
