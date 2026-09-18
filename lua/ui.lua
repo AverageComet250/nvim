@@ -48,7 +48,7 @@ require("binary").setup({
 require('silentium').setup({ accent = require('silentium').accents.violet })
 
 vim.opt.termguicolors = true
-vim.cmd('colorscheme modus_vivendi')
+vim.cmd('colorscheme oxocarbon')
 
 require("ccc").setup()
 
