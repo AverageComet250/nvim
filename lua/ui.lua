@@ -6,6 +6,7 @@ vim.pack.add({
     "https://github.com/silentium-theme/silentium.nvim",
     "https://github.com/jackplus-xyz/binary.nvim",
     "https://github.com/lewis6991/gitsigns.nvim",
+    "https://github.com/lukas-reineke/indent-blankline.nvim",
     "https://github.com/folke/noice.nvim",
     "https://github.com/nvim-lualine/lualine.nvim",
     "https://github.com/akinsho/bufferline.nvim",
@@ -160,6 +161,8 @@ require('incline').setup {
 }
 
 require('full_visual_line').setup()
+
+require("ibl").setup()
 
 require("which-key").setup({
     preset = "helix",
