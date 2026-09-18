@@ -90,6 +90,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       -- Enable LSP-managed folding
       vim.wo[win].foldmethod = "expr"
       vim.wo[win].foldexpr = "v:lua.vim.lsp.foldexpr()"
+      vim.wo[win].foldtext = "v:lua.vim.lsp.foldtext()"
 
       -- Keep folds open by default when entering a file
       -- vim.wo[win].foldlevel = 99
@@ -99,10 +100,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client and client:supports_method("textDocument/inlayHint") then
       vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
     end
+
+    vim.lsp.codelens.enable()
   end,
 })
 
-vim.lsp.codelens.enable()
 
 vim.diagnostic.config({
     severity_sort = true,
