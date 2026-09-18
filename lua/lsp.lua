@@ -104,14 +104,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.lsp.codelens.enable()
 
--- The following was made by chat lmao
--- Enable LSP diagnostics (Inline error messages)
 vim.diagnostic.config({
-  virtual_text = true,  -- Show inline errors
-  signs = false,         -- Show signs in the gutter
-  underline = true,     -- Underline errors/warnings
-  update_in_insert = false, -- Don't update diagnostics while typing
-  severity_sort = true  -- Sort diagnostics by severity
+    severity_sort = true,
+    signs = false,
+    underline = true,
+    update_in_insert = false,
+    virtual_lines = true,
+    virtual_text = false,
 })
 
 vim.lsp.config('harper_ls', {
