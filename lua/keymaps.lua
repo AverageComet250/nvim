@@ -22,50 +22,29 @@ vim.keymap.set('n', "<leader>s", function()
 end, { desc = "Show signcolumn" })
 
 local function insert_lines(dir, count)
-    local row = vim.api.nvim_win_get_cursor(0)[1]
-
-    local lines = {}
-    for _ = 1, count - 1 do
-        lines[#lines + 1] = ""
-    end
+    local keys
 
     if dir == "below" then
-        vim.api.nvim_put(lines, "l", true, true)
-        vim.api.nvim_win_set_cursor(0, { row + count - 1, 0 })
-        vim.api.nvim_feedkeys(
-            vim.api.nvim_replace_termcodes("<CR>", true, false, true),
-            "t",
-            false
-        )
+        -- A<CR> creates the first new line using normal Insert-mode
+        -- indentation. Additional <CR>s create the remaining lines.
+        keys = "A" .. string.rep("<CR>", count)
     else
-        vim.api.nvim_put(lines, "l", false, true)
-        vim.api.nvim_win_set_cursor(0, { row, 0 })
+        -- O creates the first new line above the current line.
+        -- Additional <CR>s create the remaining lines.
+        keys = "O" .. string.rep("<CR>", count - 1)
     end
 
-    vim.cmd.startinsert()
-end
-
--- shared operatorfunc
-local function operator_insert_lines(_)
-    local dir = vim.g._insert_dir
-    insert_lines(dir, vim.v.count1)
-end
-
-_G.operator_insert_lines = operator_insert_lines
-
-local function trigger_insert(dir)
-    vim.g._insert_dir = dir
-    vim.o.operatorfunc = "v:lua.operator_insert_lines"
-    return "g@l"
+    keys = vim.api.nvim_replace_termcodes(keys, true, false, true)
+    vim.api.nvim_feedkeys(keys, "n", false)
 end
 
 vim.keymap.set("n", "o", function()
-    return trigger_insert("below")
-end, { expr = true, noremap = true, silent = true })
+    insert_lines("below", vim.v.count1)
+end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "O", function()
-    return trigger_insert("above")
-end, { expr = true, noremap = true, silent = true })
+    insert_lines("above", vim.v.count1)
+end, { noremap = true, silent = true })
 
 -- some random lazyvim up/down magic
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
