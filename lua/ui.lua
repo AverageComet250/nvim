@@ -162,8 +162,6 @@ require('incline').setup {
 
 require('full_visual_line').setup()
 
-require("ibl").setup()
-
 require("which-key").setup({
     preset = "helix",
     spec = {

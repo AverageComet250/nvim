@@ -8,6 +8,7 @@ vim.keymap.set('n', "<leader>g", require('neogit').open, { desc = "Open Neogit U
 vim.keymap.set('n', "<leader>T", "<cmd>Telescope builtin<cr>")
 vim.keymap.set('n', "<leader>l", "<cmd>Telescope lsp_document_symbols<cr>")
 vim.keymap.set('n', "<leader>c", "<cmd>Telescope git_bcommits<cr>")
+vim.keymap.set('n', "<leader>i", "<cmd>IBLToggle<cr>")
 
 vim.keymap.set('n', "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 vim.keymap.set('n', "<C-w>d", '', { desc = "which_key_ignore" })
