@@ -7,6 +7,7 @@ vim.pack.add({
     "https://github.com/jackplus-xyz/binary.nvim",
     "https://github.com/lewis6991/gitsigns.nvim",
     "https://github.com/lukas-reineke/indent-blankline.nvim",
+    "https://github.com/leolaurindo/tunnelvision.nvim",
     "https://github.com/folke/noice.nvim",
     "https://github.com/nvim-lualine/lualine.nvim",
     "https://github.com/akinsho/bufferline.nvim",
@@ -161,6 +162,15 @@ require('incline').setup {
 }
 
 require('full_visual_line').setup()
+
+require("tunnelvision").setup({
+    mode = "dynamic",
+    sources = {
+        require("tunnelvision").combine("lsp", "treesitter"),
+        "lsp",
+        "treesitter",
+    },
+})
 
 require("which-key").setup({
     preset = "helix",
