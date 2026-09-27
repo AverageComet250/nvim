@@ -98,6 +98,11 @@ vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 vim.keymap.set("n", "<leader>bd", "<cmd>bd<cr>", { desc = "Delete Buffer" })
 
+-- flip # and *
+-- no I swear I'm not mad, it's just easier to reach for #
+vim.keymap.set('n', "#", "*")
+vim.keymap.set('n', "*", "#")
+
 -- disable <shift> jk
 vim.keymap.set("n", "<S-j>", "")
 -- vim.keymap.del("n", "<S-j>")
