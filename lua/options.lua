@@ -19,3 +19,5 @@ vim.opt.spelllang = 'en_gb'
 vim.opt.spell = false
 
 vim.opt.winborder = "rounded"
+
+vim.opt.background = "dark"
